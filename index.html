@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     <link href="dist/gridstack.min.css" rel="stylesheet"/>
     <title>Classroom Seating</title>
 </head>
 <body>
-    <h1>gridstack.js base demo for issues</h1>
-<p>Fork and modify me to demonstrate your issue when creating an issue for gridstack.js</p>
-<div><a class="btn btn-default" onClick="addNewWidget()" href="#">Add Widget</a></div>
-<br />
-
 <div class="grid-stack"></div>
 <script src="dist/gridstack-h5.js"></script>
+<script>
+    var grid = GridStack.init();
+    const serializedData = [
+        {w: 2, h: 1, content: 'Kezban'},
+        {w: 2, h: 1, content: 'Tuncay'},
+        {w: 2, h: 1, content: 'Murre'},
+        ];
+    grid.load(serializedData);
+    grid.enableResize(false);
+    
+</script>
 </body>
 </html>

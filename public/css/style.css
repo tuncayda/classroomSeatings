@@ -1,15 +1,24 @@
 body {
-  background-color: lightblue;
-}
-
-.grid-stack {
-  background: lightgoldenrodyellow;
+  background-color: #fafafa;
+  font-family: "Open Sans", sans-serif;
 }
 
 .grid-stack-item-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #2c3e50;
-  text-align: center;
-  background-color: #18bc9c;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  transition: all 0.4s;
+}
+.grid-stack-item-content:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.grid-stack-item-content:active {
+  background-color: rgba(0, 0, 0, 0.15);
 }
 
 /*# sourceMappingURL=style.css.map */
