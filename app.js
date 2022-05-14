@@ -12,13 +12,18 @@ app.use(cors());
 
 // Serve assets
 app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/node_modules/gridstack'));
 
 // Set pug templating engine
-app.set('views', './views');
-app.set('view engine', 'pug');
+// app.set('views', './views');
+// app.set('view engine', 'pug');
+
+// app.get('/', (req, res) => {
+// 	res.render('index');
+// });
 
 app.get('/', (req, res) => {
-	res.render('index');
+    res.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.listen(port, () => {
