@@ -1,6 +1,15 @@
 {
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^16.0.1",
-    "express": "^4.18.1"
+    "express": "^4.18.1",
+    "sass": "^1.51.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  },
+  "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js app.js --watch index.html",
+    "sass" : "sass ./public/scss/styles.scss ./public/css/style.css"
   }
 }
