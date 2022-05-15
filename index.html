@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,22 +9,35 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    <link href="dist/gridstack.min.css" rel="stylesheet"/>
+    <link href="dist/gridstack.min.css" rel="stylesheet" />
     <title>Classroom Seating</title>
 </head>
+
 <body>
-<div class="grid-stack"></div>
-<script src="dist/gridstack-h5.js"></script>
-<script>
-    var grid = GridStack.init();
-    const serializedData = [
-        {w: 2, h: 1, content: 'Kezban'},
-        {w: 2, h: 1, content: 'Tuncay'},
-        {w: 2, h: 1, content: 'Murre'},
+    <nav class="navbar">
+        <div class="navbar-menu-item">
+            <img class="navbar-hamburger-menu-icon" src="/icons/bars-solid.svg" alt="Menu icon">
+        </div>
+        <a href="7a" class="navbar-menu-link">KLASS 7A</a>
+        <a href="7b" class="navbar-menu-link">KLASS 7B</a>
+        <a href="7c" class="navbar-menu-link">KLASS 7C</a>
+    </nav>
+
+    <!-- Grid tag -->
+    <div class="grid-stack"></div>
+
+    <!-- Grid script -->
+    <script src="dist/gridstack-h5.js"></script>
+    <script>
+        var grid = GridStack.init();
+        const serializedData = [
+            { w: 2, h: 1, content: 'Kezban' },
+            { w: 2, h: 1, content: 'Tuncay' },
+            { w: 2, h: 1, content: 'Murre' },
         ];
-    grid.load(serializedData);
-    grid.enableResize(false);
-    
-</script>
+        grid.load(serializedData);
+        grid.enableResize(false);
+    </script>
 </body>
+
 </html>

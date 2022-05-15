@@ -1,6 +1,66 @@
+.navbar {
+  width: 100vw;
+  height: 7.6rem;
+  background-color: #F7F7F7;
+  border-bottom: 1px solid #e0e0e0;
+  overflow-x: scroll;
+  white-space: nowrap;
+  display: flex;
+}
+.navbar > * {
+  border-right: 1px solid #E1E1E1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6rem;
+  transition: all 0.3s;
+}
+.navbar > *:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+.navbar-menu-item {
+  display: flex;
+  align-items: center;
+  width: 19rem;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+}
+.navbar-hamburger-menu-icon {
+  width: 32px;
+  height: 32px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  all: unset;
+}
+
 body {
   background-color: #fafafa;
   font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
 }
 
 .grid-stack-item-content {

@@ -1,6 +1,13 @@
+@import 
+'_navbar.scss', 
+'_reset.scss',
+'_variables.scss'
+;
+
 body {
     background-color: #fafafa;
     font-family: 'Open Sans', sans-serif;
+    font-size: $fs-normal;
 }
 
 .grid-stack {
