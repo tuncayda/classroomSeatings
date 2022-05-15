@@ -3,8 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const pug = require('pug');
-const { nextTick } = require('process');
-const { render } = require('express/lib/response');
 
 const app = express();
 const hostname = process.env.HOST;
@@ -31,6 +29,7 @@ app.get('/class/:name', (req, res) => {
     // Koden nedan är inte helt korrekt. Bättre att skicka med en lista med elevernas namn istället för "classname"
     // Däremot kan "classname" användas för att hämta alla elevers namn i den klassen + eventuella inställningar för klassen
     res.render('class', className);
+    
 });
 
 // app.get('/', (req, res) => {
