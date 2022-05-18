@@ -4,6 +4,7 @@
   background-color: #F7F7F7;
   border-bottom: 1px solid #e0e0e0;
   overflow-x: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
   display: flex;
 }
@@ -57,10 +58,8 @@ a {
   all: unset;
 }
 
-body {
-  background-color: #fafafa;
-  font-family: "Open Sans", sans-serif;
-  font-size: 1.6rem;
+.grid-stack {
+  margin-top: 8rem;
 }
 
 .grid-stack-item-content {
@@ -79,6 +78,83 @@ body {
 }
 .grid-stack-item-content:active {
   background-color: rgba(0, 0, 0, 0.15);
+}
+
+.header {
+  width: 100vw;
+  height: 7rem;
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+}
+.header > *:not(:first-child) {
+  margin-left: 0.8rem;
+}
+.header-generate-button {
+  width: 19rem;
+  height: 4.8rem;
+  background-color: #ECF2FF;
+  border: 1px solid #CFDFFF;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header-generate-button-text {
+  color: #6470B1;
+}
+.header-generate-button-icon {
+  width: 20px;
+  height: 20px;
+}
+.header-generate-button:hover {
+  background-color: #e3e8ff;
+  transition: background-color 0.3;
+  cursor: pointer;
+}
+.header-fullscreen-button {
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color: #ECF2FF;
+  border: 1px solid #CFDFFF;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-fullscreen-button-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+.header-fullscreen-button:hover {
+  background-color: #e3e8ff;
+  transition: background-color 0.3;
+  cursor: pointer;
+}
+.header-randomize-button {
+  width: 4.8rem;
+  height: 4.8rem;
+  background-color: #ECF2FF;
+  border: 1px solid #CFDFFF;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header-randomize-button-icon {
+  width: 2.8rem;
+  height: 2.8rem;
+}
+.header-randomize-button:hover {
+  background-color: #e3e8ff;
+  transition: background-color 0.3;
+  cursor: pointer;
+}
+
+body {
+  background-color: #fafafa;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.6rem;
 }
 
 /*# sourceMappingURL=style.css.map */

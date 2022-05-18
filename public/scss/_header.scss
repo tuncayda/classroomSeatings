@@ -1,0 +1,84 @@
+.header {
+    width: 100vw;
+    height: 7rem;
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+    
+    & > *:not(:first-child) {
+        margin-left: .8rem
+    }
+    
+    &-generate-button {
+        width: 19rem;
+        height: 4.8rem;
+        background-color: #ECF2FF;
+        border: 1px solid #CFDFFF;
+        border-radius: 4px;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        &-text {
+            color: #6470B1;
+        }
+
+        &-icon {
+            width: 20px;
+            height: 20px;
+            
+        }
+
+        &:hover {
+            background-color: #e3e8ff;
+            transition: background-color .3;
+            cursor: pointer;
+        }
+    }
+
+    &-fullscreen-button {
+        width: 4.8rem;
+        height: 4.8rem;
+        background-color: #ECF2FF;
+        border: 1px solid #CFDFFF;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-icon {
+            width: 2.8rem;
+            height: 2.8rem;
+            
+        }
+        
+        &:hover {
+            background-color: #e3e8ff;
+            transition: background-color .3;
+            cursor: pointer;
+        }
+    }
+    
+    &-randomize-button {
+        width: 4.8rem;
+        height: 4.8rem;
+        background-color: #ECF2FF;
+        border: 1px solid #CFDFFF;
+        border-radius: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &-icon {
+            width: 2.8rem;
+            height: 2.8rem;
+        }
+
+        &:hover {
+            background-color: #e3e8ff;
+            transition: background-color .3;
+            cursor: pointer;
+        }
+    }
+}

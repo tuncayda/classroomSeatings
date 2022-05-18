@@ -10,16 +10,9 @@ head
   link(href='dist/gridstack.min.css' rel='stylesheet')
   title Classroom Seating
   include _navbar
+  include _header
 // Grid tag
 .grid-stack
 // Grid script
 script(src='dist/gridstack-h5.js')
-script.
-  var grid = GridStack.init();
-  const serializedData = [
-  { w: 2, h: 1, content: 'Kezban' },
-  { w: 2, h: 1, content: 'Tuncay' },
-  { w: 2, h: 1, content: 'Murre' },
-  ];
-  grid.load(serializedData);
-  grid.enableResize(false);
+script(src='scripts/grid.js')

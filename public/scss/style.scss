@@ -1,7 +1,9 @@
 @import 
+'_variables.scss',
 '_navbar.scss', 
 '_reset.scss',
-'_variables.scss'
+'_grid.scss',
+'header.scss'
 ;
 
 body {
@@ -9,27 +11,3 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: $fs-normal;
 }
-
-.grid-stack {
-  }
-  
-  .grid-stack-item-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    color: #2c3e50;
-    background-color: rgba(0,0,0,.1);
-    border-radius: 4px;
-    transition: all .4s;
-    
-    &:hover {
-        background-color: rgba(0,0,0,.2);
-        cursor: pointer;
-        transition: all .4s;
-    }
-
-    &:active {
-        background-color: rgba(0,0,0,.15);
-    }
-  }
