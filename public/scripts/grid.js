@@ -1,24 +1,23 @@
 let options = {
-    margin: 4
+    margin: 4,
+    float: true
   }
 
 const serializedData = [
-{ w: 2, h: 1, w: 1, content: 'Kezban' },
-{ w: 2, h: 1, w: 1, content: 'Tuncay' },
-{ w: 2, h: 1, w: 1, content: 'Kezban' },
-{ w: 2, h: 1, w: 1, content: 'Tuncay' },
-{ w: 2, h: 1, w: 1, content: 'Daniella'},
-{ w: 2, h: 1, w: 1, content: 'Lorem' },
-{ w: 2, h: 1, w: 1, content: 'Tuncay' },
-{ w: 2, h: 1, w: 1, content: 'Kezban' },
-{ w: 2, h: 1, w: 1, content: 'Tuncay' },
-{ w: 2, h: 1, w: 1, content: 'Kezban' },
-{ w: 2, h: 1, w: 1, content: 'Tuncay' },
-{ w: 2, h: 1, w: 1, content: 'Kezban' },
-{ w: 2, h: 1, w: 1, content: 'Tuncay' },
-{ w: 2, h: 1, w: 1, content: 'Kezban' },
-{ w: 2, h: 1, w: 1, content: 'Tuncay' },
-{ w: 2, h: 1, w: 1, content: 'Murre' },
+{ x: 1, y:0, h: 1, w: 1, content: 'Kezban' },
+{ x: 1, y:1, h: 1, w: 1, content: 'Kezban' },
+{ x: 1, y:2, h: 1, w: 1, content: 'Kezban' },
+{ x: 1, y:3, h: 1, w: 1, content: 'Kezban' },
+
+{ x: 2, y:0, h: 1, w: 1, content: 'Kezban' },
+{ x: 2, y:1, h: 1, w: 1, content: 'Kezban' },
+{ x: 2, y:2, h: 1, w: 1, content: 'Kezban' },
+{ x: 2, y:3, h: 1, w: 1, content: 'Kezban' },
+
+{ x: 4, y:0, h: 1, w: 1, content: 'Kezban' },
+{ x: 4, y:1, h: 1, w: 1, content: 'Kezban' },
+{ x: 4, y:2, h: 1, w: 1, content: 'Kezban' },
+{ x: 4, y:3, h: 1, w: 1, content: 'Kezban' },
 ];
 
 let grid = GridStack.init(options);

@@ -59,7 +59,9 @@ a {
 }
 
 .grid-stack {
-  margin-top: 8rem;
+  margin-top: 4rem;
+  margin-right: 1rem;
+  margin-left: 1rem;
 }
 
 .grid-stack-item-content {
