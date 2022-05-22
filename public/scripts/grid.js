@@ -1,64 +1,48 @@
-const Student = require('./student');
-
-let students = [
-  new Student('Tuncay', 'Dagdelen'),
-  new Student('Kezban', 'Colak'),
-  new Student('Mustafa', 'Colak'),
-  new Student('Turgay', 'Dagdelen')
-];
-
-// TODO: currently there can be more students than total seats eg rows+columns => add a check or make some constraints
-// If you add more rows and columns than number of students, the grid will be populated w "undefined" => cannot get firstname
-// of undefined
-function createClassroomLayout(rows, columns, emptySeatPositions, students) {
-  // Create array
-  let arr = new Array(rows);
-  for(let i = 0; i < rows; i++) {
-    arr[i] = new Array(columns);
+/**
+ * x coordinate and y coordinate
+ * h is heigt
+ * w is width
+ */
+class Student {
+  constructor(firstName, lastName, x, y, h = 1, w = 1) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.x = x;
+    this.y = y;
+    this.h = h;
+    this.w = w;
+    this.content = firstName;
   }
 
-  // Fill grid with people or leave empty seats
-  let i = 0;
-  for(let x = 0; x < rows; x++) {
-    for(let y = 0; y < columns; y++) {
-      if(emptySeatPositions.includes((x,y))) {
-        continue;
-      } else {
-        arr[x][y] = students[i];
-        i++;
-      }
-    }
-  }
-  return arr;
+  getFirstName() { return this.firstName }
+  getLastName() { return this.lastName }
+  getX() { return this.x }
+  getY() { return this.y }
+  getContent() { return this.content }
 }
 
-console.log(createClassroomLayout(2,5,[], students));
-// console.log(createClassroomLayout(2,5,[(2,1), (3,2), (1,1), (4,4)], students));
+//TODO: skapa templates som automatisk placerar ut studenter på sådana positioner att det uppstår "empty seats", utan 
+// att behöva specificera vart  empty seats ska vara...Kom ihåg; där det inte placeras en widget så kommer det fyllas
+// av empty seat.
+let students = [
+  new Student('Tuncay', 'Dagdelen', 1, 1),
+  new Student('Keziban', 'Colak', 2, 1),
+  new Student('Turgay', 'Dagdelen', 2, 0),
+  new Student('Mustafa', 'Colak', 3, 0),
+];
 
-// let options = {
-//     margin: 4,
-//     float: true
-//   }
+const serializedData = students;
 
-// const serializedData = [
-// { x: 1, y:0, h: 1, w: 1, content: 'Kezban' },
-// { x: 1, y:1, h: 1, w: 1, content: 'Kezban' },
-// { x: 1, y:2, h: 1, w: 1, content: 'Kezban' },
-// { x: 1, y:3, h: 1, w: 1, content: 'Kezban' },
+let options = {
+  margin: 4,
+  float: true
+}
 
-// { x: 2, y:0, h: 1, w: 1, content: 'Kezban' },
-// { x: 2, y:1, h: 1, w: 1, content: 'Kezban' },
-// { x: 2, y:2, h: 1, w: 1, content: 'Kezban' },
-// { x: 2, y:3, h: 1, w: 1, content: 'Kezban' },
+let grid = GridStack.init(options);
 
-// { x: 4, y:0, h: 1, w: 1, content: 'Kezban' },
-// { x: 4, y:1, h: 1, w: 1, content: 'Kezban' },
-// { x: 4, y:2, h: 1, w: 1, content: 'Kezban' },
-// { x: 4, y:3, h: 1, w: 1, content: 'Kezban' },
-// ];
+grid.enableResize(false);
+grid.cellHeight(grid.cellWidth() * .8);
+grid.load(serializedData);
 
-// let grid = GridStack.init(options);
-
-// grid.load(serializedData);
-// grid.enableResize(false);
-// grid.cellHeight(grid.cellWidth() * .8);
+// Serialized example
+// [{ x: 1, y:0, h: 1, w: 1, content: 'Kezban' },...]
