@@ -15,23 +15,45 @@ class Student {
   }
 
   getFirstName() { return this.firstName }
-  getLastName() { return this.lastName }
+  getLastName()  { return this.lastName }
   getX() { return this.x }
   getY() { return this.y }
-  getContent() { return this.content }
+  getContent()   { return this.content }
 }
 
-//TODO: skapa templates som automatisk placerar ut studenter på sådana positioner att det uppstår "empty seats", utan 
-// att behöva specificera vart  empty seats ska vara...Kom ihåg; där det inte placeras en widget så kommer det fyllas
-// av empty seat.
+function loadClass(studentList, seatsTemplateList) {
+  let index = 0;
+
+  studentList.forEach(student => {
+    student.x = seatsTemplateList[index][0];
+    student.y = seatsTemplateList[index][1];
+    index++;
+  });
+
+  return studentList;
+}
+
 let students = [
-  new Student('Tuncay', 'Dagdelen', 1, 1),
-  new Student('Keziban', 'Colak', 2, 1),
-  new Student('Turgay', 'Dagdelen', 2, 0),
-  new Student('Mustafa', 'Colak', 3, 0),
+  new Student('Tuncay', 'Dagdelen'),
+  new Student('Keziban', 'Colak'),
+  new Student('Turgay', 'Dagdelen'),
+  new Student('Mustafa', 'Colak')
 ];
 
-const serializedData = students;
+let seats = [
+  [0,0],
+  [0,1],
+  [2,0],
+  [2,1],
+  [0,4],
+  [1,0],
+  [1,1],
+  [1,2],
+  [1,3],
+  [1,4]
+];
+
+const serializedData = loadClass(students, seats);;
 
 let options = {
   margin: 4,
@@ -43,6 +65,21 @@ let grid = GridStack.init(options);
 grid.enableResize(false);
 grid.cellHeight(grid.cellWidth() * .8);
 grid.load(serializedData);
+
+
+let saved;
+function saveLayout() {
+  saved = grid.save();
+}
+
+function loadLayout() {
+  grid.load(saved);
+}
+
+function shuffle(arr) {
+  return arr.sort(() => Math.random() - 0.5);
+}
+
 
 // Serialized example
 // [{ x: 1, y:0, h: 1, w: 1, content: 'Kezban' },...]
