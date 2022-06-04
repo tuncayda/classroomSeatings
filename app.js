@@ -23,7 +23,7 @@ app.get('/', (req, res) => {
 });
 
 // TODO: använda denna endpoint för att visa specifik klass
-app.get('/class/:name', (req, res) => {
+app.get('/v1/class/', (req, res) => {
     const className = req.params.name;
     // TODO: hämta klassen, skicka den till "class" och rendera klassen där
     // Koden nedan är inte helt korrekt. Bättre att skicka med en lista med elevernas namn istället för "classname"

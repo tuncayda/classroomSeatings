@@ -21,16 +21,18 @@ class Student {
   getContent()   { return this.content }
 }
 
-function loadClass(studentList, seatsTemplateList) {
+function fillClass(studentList, seatsTemplateList) {
   let index = 0;
+  let classList = [];
 
   studentList.forEach(student => {
     student.x = seatsTemplateList[index][0];
     student.y = seatsTemplateList[index][1];
+    classList.push(student);
     index++;
   });
 
-  return studentList;
+  return classList;
 }
 
 let students = [
@@ -41,8 +43,8 @@ let students = [
 ];
 
 let seats = [
-  [0,0],
-  [0,1],
+  [4,0],
+  [8,0],
   [2,0],
   [2,1],
   [0,4],
@@ -53,7 +55,7 @@ let seats = [
   [1,4]
 ];
 
-const serializedData = loadClass(students, seats);;
+const serializedData = fillClass(students, seats);
 
 let options = {
   margin: 4,

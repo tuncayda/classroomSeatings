@@ -82,6 +82,36 @@ a {
   background-color: rgba(0, 0, 0, 0.15);
 }
 
+.menu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #fafafa;
+  z-index: 10;
+}
+
+.collapsible {
+  background-color: transparent;
+  color: #000;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  outline: none;
+  font-size: 15px;
+}
+
+.content {
+  background-color: transparent;
+  display: none;
+  overflow: hidden;
+}
+
 .header {
   width: 100vw;
   height: 7rem;
