@@ -1,5 +1,7 @@
 .menu {
-    position: fixed; 
+    position: fixed;
+    display: flex;
+    flex-direction: column;
     width: 100vw; 
     height: 100vh; 
     top: 0;
@@ -8,18 +10,24 @@
     bottom: 0;
     background-color: #fafafa;
     z-index: 10;
+    color: #000;
+
+    & > *:not(:first-child) {
+        margin-top: 1.2rem;
+    }
 }
 
 .collapsible {
     background-color: transparent;
     color: #000;
+    font-weight: 600;
     cursor: pointer;
-    padding: 18px;
     width: 100%;
     border: none;
     text-align: left;
     outline: none;
-    font-size: 15px;
+    font-size: 1.6rem;
+    width: 16rem;
 }
 
 .active, .collapsible:hover {
@@ -31,4 +39,17 @@
     // padding: 0 18px;
     display: none;
     overflow: hidden;
+
+    & > * {
+        margin-top: 1.2rem;
+    }
+
+    & > *:last-child {
+        margin-bottom: 1.2rem;
+    }
   }
+
+  // On click
+// Navigate to: "MacBook Pro 14" - 19";
+// Animate: Smart animate;
+// Spring: { mass: 1, stiffness: 100, damping: 15 };
