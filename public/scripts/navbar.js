@@ -15,3 +15,12 @@
      }
    });
  }
+
+ let menuIcon = document.getElementById("menu-icon");
+ menuIcon.addEventListener("click", (e) => {
+   if(e.style.display === "block") {
+     e.style.display = "none";
+   } else {
+     e.style.display = "block";
+   }
+ });

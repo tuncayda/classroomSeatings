@@ -84,11 +84,8 @@ function shuffle(arr) {
   return arr.sort(() => Math.random() - 0.5);
 }
 
-
 // Serialized example
 // [{ x: 1, y:0, h: 1, w: 1, content: 'Kezban' },...]
-
-
 
 class SchoolClass {
   constructor(id, name, students, seatingTemplate) {
@@ -103,25 +100,22 @@ class SchoolClass {
   }
 }
 
-let klass7a = new SchoolClass(4711,"Klass 7A",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
-let klass7b = new SchoolClass(1234,"Klass 7B",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
-let klass7c = new SchoolClass(4321,"Klass 7C",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
+// let klass7a = new SchoolClass(4711,"Klass 7A",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
+// let klass7b = new SchoolClass(1234,"Klass 7B",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
+// let klass7c = new SchoolClass(4321,"Klass 7C",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
+// localStorage.setItem('db', JSON.stringify([klass7a, klass7b, klass7c]));
 
 
-// // Find the right class and append the new student to the list into the array 'students'
-// console.log(myclass)
-
-
-function addToClass(schoolClass) {
+function addToClass(schoolClassID) {
+  // Find the input html elements
   let firstname = document.getElementById("firstname").value;
   let lastname = document.getElementById("lastname").value;
-  let student = new Student(firstname, lastname);
+
+  // Create student and push to localStorage
+  saveToLocalStorage(new Student(firstname, lastname), schoolClassID);
 }
 
-localStorage.setItem('db', JSON.stringify([klass7a, klass7b, klass7c]));
-
 function saveToLocalStorage(student, schoolClassId) {
-  
   // Parse localStorage and get the db list
   let db = JSON.parse(localStorage.getItem('db'));
   
@@ -135,9 +129,22 @@ function saveToLocalStorage(student, schoolClassId) {
 
   // Push the db object to localStorage
   localStorage.setItem('db', JSON.stringify(db));
-  
+  console.log(JSON.parse(localStorage.getItem('db')));
 }
-saveToLocalStorage(new Student('Hanna', 'Davidsson'), 4711);
-saveToLocalStorage(new Student('Lorem', 'Ipsum'), 1234);
-saveToLocalStorage(new Student('Jackass', 'ass'), 4321);
-console.log(JSON.parse(localStorage.getItem('db')))
+
+function addClassroom() {
+  // Find the input html element
+  let schoolClassName = document.getElementById("schoolClass").value;
+
+  // Get all the classes from localStorage
+  let db = JSON.parse(localStorage.getItem('db'));
+  
+  // Add the new class with date as unique id
+  let schoolClassID = Date.now();
+  db.push(new SchoolClass(schoolClassID, schoolClassName, [], []));
+
+  // Push the updated classlist to localStorage
+  localStorage.setItem('db', JSON.stringify(db));
+
+  console.log(JSON.parse(localStorage.getItem('db')));
+}
