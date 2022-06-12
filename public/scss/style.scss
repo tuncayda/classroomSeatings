@@ -1,15 +1,13 @@
 @import 
-'_variables.scss',
 '_navbar.scss', 
 '_reset.scss',
-'_grid.scss',
-'_menu.scss',
-'header.scss'
+'variables.scss',
+'_grid.scss'
 ;
 
 body {
     background-color: #fafafa;
     font-family: 'Inter', sans-serif;
-    font-size: $fs-normal;
+    font-size: 1.4rem;
     font-weight: 400;
 }

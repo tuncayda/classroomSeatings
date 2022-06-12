@@ -148,3 +148,17 @@ function addClassroom() {
 
   console.log(JSON.parse(localStorage.getItem('db')));
 }
+
+// Hamburger menu icon
+const menuBtn = document.querySelector('.hamburger-container');
+const menuIcon = menuBtn.children[0];
+let menuIsOpen = false;
+menuBtn.addEventListener('click', () => {
+  if(!menuIsOpen) {
+    menuIcon.classList.add('open');
+    menuIsOpen = true;
+  } else {
+    menuIcon.classList.remove('open');
+    menuIsOpen = false;
+  }
+});

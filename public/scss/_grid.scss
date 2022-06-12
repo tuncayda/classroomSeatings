@@ -1,32 +1,22 @@
-@use "sass:math";
-
 .grid-stack {
     margin-top: 4rem;
     margin-right: 1rem;
     margin-left: 1rem;
 }
 
-// .grid-stack-item-content {
-//   width: 100px !important;
-// }
-
 .grid-stack-item-content {
   display: flex;
   align-items: center;
   justify-content: center;
   
-  color: #2c3e50;
-  background-color: rgba(0,0,0,.1);
+  color: #000;
+  background-color: $gray-10;
   border-radius: 4px;
   transition: all .4s;
   
   &:hover {
-      background-color: rgba(0,0,0,.2);
+      background-color: $gray-30;
       cursor: pointer;
       transition: all .4s;
-  }
-
-  &:active {
-      background-color: rgba(0,0,0,.15);
   }
 }

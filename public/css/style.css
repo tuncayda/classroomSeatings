@@ -1,37 +1,87 @@
 .navbar {
   width: 100vw;
-  height: 7.6rem;
-  background-color: #F7F7F7;
-  border-bottom: 1px solid #e0e0e0;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
+  height: 6rem;
+  background-color: #EEEEEE;
+  border-bottom: 1px solid #E1E1E1;
   display: flex;
 }
-.navbar > * {
+.navbar > .logo {
+  width: 18rem;
   border-right: 1px solid #E1E1E1;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 0 6rem;
-  transition: all 0.3s;
+  align-items: center;
 }
-.navbar > *:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  transition: all 0.3s;
+.navbar-button {
+  width: 18rem;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid #E1E1E1;
+}
+.navbar-button:hover {
+  background-color: #E9E9E9;
   cursor: pointer;
 }
-.navbar-menu-item {
-  display: flex;
-  align-items: center;
-  width: 19rem;
-  height: inherit;
+.navbar-button.active {
+  background-color: #E9E9E9;
+  border-bottom: 2px solid #CDCDCD;
+}
+
+.logo {
+  width: 10rem;
+}
+
+.hamburger-container {
+  width: 10rem;
+  border-left: 1px solid #E1E1E1;
   display: flex;
   justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
-.navbar-hamburger-menu-icon {
+.hamburger-container:hover {
+  background-color: #E9E9E9;
+}
+.hamburger-btn {
   width: 32px;
-  height: 32px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #424242;
+  transition: all 0.5s ease-in-out;
+}
+.hamburger-btn::before, .hamburger-btn::after {
+  content: "";
+  position: absolute;
+  width: 32px;
+  height: 5px;
+  border-radius: 5px;
+  background-color: #424242;
+  transition: all 0.5s ease-in-out;
+}
+.hamburger-btn::before {
+  transform: translateY(-8px);
+}
+.hamburger-btn::after {
+  transform: translateY(8px);
+}
+
+.hamburger-btn.hamburger-btn.open {
+  transform: translateX(-50px);
+  background-color: transparent;
+}
+
+.hamburger-btn.open.hamburger-btn::before {
+  transform: rotate(45deg) translate(35px, -35px);
+}
+
+.hamburger-btn.open.hamburger-btn::after {
+  transform: rotate(-45deg) translate(35px, 35px);
+}
+
+.push {
+  margin-left: auto;
 }
 
 * {
@@ -58,6 +108,71 @@ a {
   all: unset;
 }
 
+/**
+ * 1. Change the font styles in all browsers.
+ * 2. Remove the margin in Firefox and Safari.
+ */
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  line-height: 1.15;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  background: transparent;
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+}
+
+/**
+ * Show the overflow in IE.
+ * 1. Show the overflow in Edge.
+ */
+button,
+input {
+  /* 1 */
+  overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Edge, Firefox, and IE.
+ * 1. Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+  /* 1 */
+  text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+
 .grid-stack {
   margin-top: 4rem;
   margin-right: 1rem;
@@ -68,138 +183,21 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #2c3e50;
-  background-color: rgba(0, 0, 0, 0.1);
+  color: #000;
+  background-color: #EEEEEE;
   border-radius: 4px;
   transition: all 0.4s;
 }
 .grid-stack-item-content:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: #E9E9E9;
   cursor: pointer;
   transition: all 0.4s;
-}
-.grid-stack-item-content:active {
-  background-color: rgba(0, 0, 0, 0.15);
-}
-
-.menu {
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #fafafa;
-  z-index: 10;
-  color: #000;
-}
-.menu > *:not(:first-child) {
-  margin-top: 1.2rem;
-}
-
-.collapsible {
-  background-color: transparent;
-  color: #000;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
-  border: none;
-  text-align: left;
-  outline: none;
-  font-size: 1.6rem;
-  width: 16rem;
-}
-
-.content {
-  background-color: transparent;
-  display: none;
-  overflow: hidden;
-}
-.content > * {
-  margin-top: 1.2rem;
-}
-.content > *:last-child {
-  margin-bottom: 1.2rem;
-}
-
-.header {
-  width: 100vw;
-  height: 7rem;
-  display: flex;
-  align-items: center;
-  padding-left: 1rem;
-}
-.header > *:not(:first-child) {
-  margin-left: 0.8rem;
-}
-.header-generate-button {
-  width: 19rem;
-  height: 4.8rem;
-  background-color: #ECF2FF;
-  border: 1px solid #CFDFFF;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-}
-.header-generate-button-text {
-  color: #6470B1;
-}
-.header-generate-button-icon {
-  width: 20px;
-  height: 20px;
-}
-.header-generate-button:hover {
-  background-color: #e3e8ff;
-  transition: background-color 0.3;
-  cursor: pointer;
-}
-.header-fullscreen-button {
-  width: 4.8rem;
-  height: 4.8rem;
-  background-color: #ECF2FF;
-  border: 1px solid #CFDFFF;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.header-fullscreen-button-icon {
-  width: 2.8rem;
-  height: 2.8rem;
-}
-.header-fullscreen-button:hover {
-  background-color: #e3e8ff;
-  transition: background-color 0.3;
-  cursor: pointer;
-}
-.header-randomize-button {
-  width: 4.8rem;
-  height: 4.8rem;
-  background-color: #ECF2FF;
-  border: 1px solid #CFDFFF;
-  border-radius: 4px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.header-randomize-button-icon {
-  width: 2.8rem;
-  height: 2.8rem;
-}
-.header-randomize-button:hover {
-  background-color: #e3e8ff;
-  transition: background-color 0.3;
-  cursor: pointer;
 }
 
 body {
   background-color: #fafafa;
   font-family: "Inter", sans-serif;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   font-weight: 400;
 }
 
