@@ -150,15 +150,13 @@ function addClassroom() {
 }
 
 // Hamburger menu icon
-const menuBtn = document.querySelector('.hamburger-container');
-const menuIcon = menuBtn.children[0];
-let menuIsOpen = false;
-menuBtn.addEventListener('click', () => {
-  if(!menuIsOpen) {
-    menuIcon.classList.add('open');
-    menuIsOpen = true;
-  } else {
-    menuIcon.classList.remove('open');
-    menuIsOpen = false;
-  }
+const hamburgerBtn = document.querySelector('.hamburger-btn');
+const modal = document.querySelector('.modal');
+hamburgerBtn.addEventListener('click', () => {
+  modal.style = 'display: block'
 });
+window.addEventListener('click', e => {
+  if(e.target == modal) {
+    modal.style = 'display: none'
+  }
+})

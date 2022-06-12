@@ -35,66 +35,38 @@
     }
 }
 
+.hamburger-btn {
+    border-left: 1px solid $gray-20;
+}
+
 .logo {
     width: 10rem;
-}
-
-.hamburger {
-    
-    &-container {
-        width: 10rem;
-        border-left: 1px solid $gray-20;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        cursor: pointer;
-
-        &:hover {
-            background-color: $gray-30;
-        }
-    }
-
-    &-btn {
-        width: 32px;
-        height: 5px;
-        border-radius: 5px;
-        background-color: $gray-50;
-        transition: all .5s ease-in-out;
-
-        &::before, &::after {
-            content: '';
-            position: absolute;
-            width: 32px;
-            height: 5px;
-            border-radius: 5px;
-            background-color: $gray-50;
-            transition: all .5s ease-in-out;
-        }
-
-        &::before {
-            transform: translateY(-8px);
-        }
-        
-        &::after {
-            transform: translateY(8px);
-        }
-    }
-}
-
-.hamburger-btn.hamburger-btn.open{
-    transform: translateX(-50px);
-    background-color: transparent;
-}
-
-.hamburger-btn.open.hamburger-btn::before {
-    transform: rotate(45deg) translate(35px, -35px);
-}
-
-.hamburger-btn.open.hamburger-btn::after {
-    transform: rotate(-45deg) translate(35px, 35px);
 }
 
 // This element included, the following elements in DOM will be pushed to right
 .push {
     margin-left: auto;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,.2);
+    color: $gray-50;
+
+    &-content {
+        background-color: $white;
+        margin: 5% auto;
+        padding: 8rem;
+        width: 80%;
+        height: 80%;
+        // border-radius: 8px;
+        // box-shadow: 4px 4px 12px rgba(0,0,0,.2);
+    }
 }
