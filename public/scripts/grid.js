@@ -129,15 +129,15 @@ function saveToLocalStorage(student, schoolClassId) {
 
   // Push the db object to localStorage
   localStorage.setItem('db', JSON.stringify(db));
-  console.log(JSON.parse(localStorage.getItem('db')));
+  // console.log(JSON.parse(localStorage.getItem('db')));
 }
 
-function addClassroom() {
-  // Find the input html element
-  let schoolClassName = document.getElementById("schoolClass").value;
-
+function addClassroom(schoolClassName) {
   // Get all the classes from localStorage
   let db = JSON.parse(localStorage.getItem('db'));
+  if(db === null) {
+    db = [];
+  }
   
   // Add the new class with date as unique id
   let schoolClassID = Date.now();
@@ -146,7 +146,7 @@ function addClassroom() {
   // Push the updated classlist to localStorage
   localStorage.setItem('db', JSON.stringify(db));
 
-  console.log(JSON.parse(localStorage.getItem('db')));
+  // console.log(JSON.parse(localStorage.getItem('db')));
 }
 
 // Hamburger menu icon
@@ -157,10 +157,11 @@ hamburgerBtn.addEventListener('click', () => {
 });
 window.addEventListener('click', e => {
   if(e.target == modal) {
-    modal.style = 'display: none'
+    modal.style = 'display: none';
   }
-})
+});
 
+// Adding class FE
 let addClassButton = document.querySelector('.modal-content-addClassButton');
 addClassButton.addEventListener('click', () => {
   
@@ -172,7 +173,7 @@ addClassButton.addEventListener('click', () => {
   // Clear input field
   let input = document.querySelector('.modal-content-actions-inputSchoolClassName');
   input.addEventListener('focusin', () => {
-    input.value = ' ';
+    input.value = '';
   });
 
   // Cancel
@@ -183,3 +184,19 @@ addClassButton.addEventListener('click', () => {
   });
 });
 
+let submitButton = document.querySelector('.modal-content-actions-submit');
+submitButton.addEventListener('click', () => {
+  let schooClassName = document.querySelector('.modal-content-actions-inputSchoolClassName').value;
+  if(schooClassName.length < 1 || schooClassName === 'Klassnamn') {
+    alert('Class name must be longer than 1 character');
+  } else {
+    addClassroom(schooClassName);
+  }
+  console.log(JSON.parse(localStorage.getItem('db')));
+});
+
+function loadClasses() {
+  let db = JSON.parse(localStorage.getItem('db'));
+}
+
+console.log(JSON.parse(localStorage.getItem('db')));
