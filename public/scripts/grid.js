@@ -160,3 +160,26 @@ window.addEventListener('click', e => {
     modal.style = 'display: none'
   }
 })
+
+let addClassButton = document.querySelector('.modal-content-addClassButton');
+addClassButton.addEventListener('click', () => {
+  
+  // Show input field and action buttons
+  let inputField = document.querySelector('.modal-content-actions');
+  addClassButton.style.display = 'none';
+  inputField.style.display = 'block';
+
+  // Clear input field
+  let input = document.querySelector('.modal-content-actions-inputSchoolClassName');
+  input.addEventListener('focusin', () => {
+    input.value = ' ';
+  });
+
+  // Cancel
+  document.querySelector('.modal-content-actions-cancel').addEventListener('click', () => {
+    addClassButton.style.display = 'block';
+    input.value = 'Klassnamn';
+    inputField.style.display = 'none';
+  });
+});
+

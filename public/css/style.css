@@ -56,9 +56,51 @@
 .modal-content {
   background-color: #fafafa;
   margin: 5% auto;
-  padding: 8rem;
+  padding: 8rem 8rem 2rem 8rem;
   width: 80%;
   height: 80%;
+  overflow-y: auto;
+}
+.modal-content-schoolClass {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 3.2rem;
+}
+.modal-content-addClassButton:hover {
+  cursor: pointer;
+}
+.modal-content-actions {
+  display: none;
+}
+.modal-content-actions-inputSchoolClassName {
+  width: 18rem;
+  height: 4.8rem;
+  background-color: #EEEEEE;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  padding-left: 8px;
+  color: #676767;
+}
+.modal-content-actions-inputSchoolClassName:focus {
+  outline: 1px solid #CDCDCD;
+}
+.modal-content-actions-cancel {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 1.6rem;
+  margin-left: 3.2rem;
+}
+.modal-content-actions-submit {
+  width: 10rem;
+  height: 4.8rem;
+  background-color: #D9FFED;
+  border: 1px solid #5BFFB1;
+  color: #39B078;
+  border-radius: 4px;
+}
+.modal-content-actions-submit:hover {
+  cursor: pointer;
+  background-color: #C7FFE4;
 }
 
 * {

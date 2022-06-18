@@ -63,10 +63,60 @@
     &-content {
         background-color: $white;
         margin: 5% auto;
-        padding: 8rem;
+        padding: 8rem 8rem 2rem 8rem;
         width: 80%;
         height: 80%;
-        // border-radius: 8px;
-        // box-shadow: 4px 4px 12px rgba(0,0,0,.2);
+        overflow-y: auto;
+
+        &-schoolClass {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 3.2rem;
+        }
+
+        &-addClassButton {
+            &:hover {
+                cursor: pointer;
+            }
+        }
+
+        &-actions {
+            display: none; // Show when adding a class
+
+            &-inputSchoolClassName {
+                width: 18rem;
+                height: 4.8rem;
+                background-color: $gray-10;
+                border: 1px solid $gray-20;
+                border-radius: 4px;
+                padding-left: 8px;
+                color: $gray-45;
+
+                &:focus {
+                    outline: 1px solid $gray-40;
+                }
+            }
+    
+            &-cancel {
+                text-decoration: underline;
+                cursor: pointer;
+                margin-right: 1.6rem;
+                margin-left: 3.2rem;
+            }
+    
+            &-submit {
+                width: 10rem;
+                height: 4.8rem;
+                background-color: $green-10;
+                border: 1px solid $green-20;
+                color: $green-30;
+                border-radius: 4px;
+    
+                &:hover {
+                    cursor: pointer;
+                    background-color: $green-15;
+                }
+            }
+        }
     }
 }
