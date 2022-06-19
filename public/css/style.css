@@ -54,12 +54,17 @@
   color: #424242;
 }
 .modal-content {
+  position: relative;
   background-color: #fafafa;
   margin: 5% auto;
   padding: 8rem 8rem 2rem 8rem;
   width: 80%;
   height: 80%;
   overflow-y: auto;
+}
+.modal-content-bottom {
+  position: sticky;
+  margin-bottom: 3.2rem;
 }
 .modal-content-schoolClass {
   display: block;

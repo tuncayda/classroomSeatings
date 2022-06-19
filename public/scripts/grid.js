@@ -184,6 +184,7 @@ addClassButton.addEventListener('click', () => {
   });
 });
 
+// Submit schoolClass
 let submitButton = document.querySelector('.modal-content-actions-submit');
 submitButton.addEventListener('click', () => {
   let schooClassName = document.querySelector('.modal-content-actions-inputSchoolClassName').value;
@@ -191,12 +192,20 @@ submitButton.addEventListener('click', () => {
     alert('Class name must be longer than 1 character');
   } else {
     addClassroom(schooClassName);
+    updateSchoolClasses();
   }
-  console.log(JSON.parse(localStorage.getItem('db')));
 });
 
-function loadClasses() {
+function updateSchoolClasses() {
   let db = JSON.parse(localStorage.getItem('db'));
+  let schoolClass = db[db.length-1];
+  const parent = document.querySelector('.modal-content-top');
+
+  let button = document.createElement('button');
+  button.innerHTML = schoolClass.name;
+  button.setAttribute('id', schoolClass.id);
+  button.classList.add('modal-content-schoolClass');
+  parent.append(button);
 }
 
-console.log(JSON.parse(localStorage.getItem('db')));
+window.localStorage.clear()
