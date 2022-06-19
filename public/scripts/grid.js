@@ -153,11 +153,13 @@ function addClassroom(schoolClassName) {
 const hamburgerBtn = document.querySelector('.hamburger-btn');
 const modal = document.querySelector('.modal');
 hamburgerBtn.addEventListener('click', () => {
-  modal.style = 'display: block'
+  modal.style = 'display: block';
+  populateModalContent(); // load all classes from localstorage
 });
 window.addEventListener('click', e => {
   if(e.target == modal) {
     modal.style = 'display: none';
+    clearModalContent();
   }
 });
 
@@ -191,8 +193,9 @@ submitButton.addEventListener('click', () => {
   if(schooClassName.length < 1 || schooClassName === 'Klassnamn') {
     alert('Class name must be longer than 1 character');
   } else {
-    addClassroom(schooClassName);
+    addClassroom(schooClassName.toLocaleUpperCase());
     updateSchoolClasses();
+      console.log(JSON.parse(localStorage.getItem('db')));
   }
 });
 
@@ -208,4 +211,24 @@ function updateSchoolClasses() {
   parent.append(button);
 }
 
-window.localStorage.clear()
+function populateModalContent() {
+  let db = JSON.parse(localStorage.getItem('db'));
+  const parent = document.querySelector('.modal-content-top');
+
+  for(let i = 0; i < db.length; i++) {
+    let button = document.createElement('button');
+    button.innerHTML = db[i].name;
+    button.setAttribute('id', db[i].id);
+    button.classList.add('modal-content-schoolClass');
+    parent.append(button);
+  }
+}
+
+function clearModalContent() {
+  const parent = document.querySelector('.modal-content-top');
+  while(parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
+}
+
+console.log(JSON.parse(localStorage.getItem('db')));
