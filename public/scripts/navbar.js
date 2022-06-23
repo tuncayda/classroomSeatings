@@ -1,17 +1,19 @@
-/**
- * This file is to collapse/expand content
- */
- var collapsible = document.getElementsByClassName("collapsible");
- var i;
- 
- for (i = 0; i < collapsible.length; i++) {
-   collapsible[i].addEventListener("click", function() {
-     this.classList.toggle("active");
-     var content = this.nextElementSibling;
-     if (content.style.display === "block") {
-       content.style.display = "none";
-     } else {
-       content.style.display = "block";
-     }
-   });
- }
+import { populateModalContent, clearModalContent } from './modal.js';
+
+function showModal() {
+  // Hamburger menu icon
+  const hamburgerBtn = document.querySelector('.hamburger-btn');
+  const modal = document.querySelector('.modal');
+  hamburgerBtn.addEventListener('click', () => {
+    modal.style = 'display: block';
+    populateModalContent(); // load all classes from localstorage
+  });
+  window.addEventListener('click', e => {
+    if (e.target == modal) {
+      modal.style = 'display: none';
+      clearModalContent();
+    }
+  });
+}
+
+export { showModal }

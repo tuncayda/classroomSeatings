@@ -1,41 +1,6 @@
-/**
- * x coordinate and y coordinate
- * h is heigt
- * w is width
- */
-
-
-class Student {
-  constructor(firstName, lastName, x, y, h = 1, w = 1) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.x = x;
-    this.y = y;
-    this.h = h;
-    this.w = w;
-    this.content = firstName;
-  }
-
-  getFirstName() { return this.firstName }
-  getLastName()  { return this.lastName }
-  getX() { return this.x }
-  getY() { return this.y }
-  getContent()   { return this.content }
-}
-
-function fillClass(studentList, seatsTemplateList) {
-  let index = 0;
-  let classList = [];
-
-  studentList.forEach(student => {
-    student.x = seatsTemplateList[index][0];
-    student.y = seatsTemplateList[index][1];
-    classList.push(student);
-    index++;
-  });
-
-  return classList;
-}
+import { Student, fillClass } from './student.js';
+import { addModalButtons } from './modal.js';
+import { showModal } from './navbar.js';
 
 let students = [
   new Student('Tuncay', 'Dagdelen'),
@@ -57,6 +22,7 @@ let seats = [
   [1,4]
 ];
 
+// Serialized example [{ x: 1, y:0, h: 1, w: 1, content: 'Kezban' },...]
 const serializedData = fillClass(students, seats);
 
 let options = {
@@ -84,151 +50,8 @@ function shuffle(arr) {
   return arr.sort(() => Math.random() - 0.5);
 }
 
-// Serialized example
-// [{ x: 1, y:0, h: 1, w: 1, content: 'Kezban' },...]
 
-class SchoolClass {
-  constructor(id, name, students, seatingTemplate) {
-    this.id = id;
-    this.name = name;
-    this.seatingTemplate = seatingTemplate;
-    this.students = students;
-  }
-
-  addStudent(student) {
-    this.students.push(student);
-  }
-}
-
-// let klass7a = new SchoolClass(4711,"Klass 7A",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
-// let klass7b = new SchoolClass(1234,"Klass 7B",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
-// let klass7c = new SchoolClass(4321,"Klass 7C",[new Student("Tuncay", "Dagdelen"), new Student("Keziban", "Colak")], seats);
-// localStorage.setItem('db', JSON.stringify([klass7a, klass7b, klass7c]));
-
-
-function addToClass(schoolClassID) {
-  // Find the input html elements
-  let firstname = document.getElementById("firstname").value;
-  let lastname = document.getElementById("lastname").value;
-
-  // Create student and push to localStorage
-  saveToLocalStorage(new Student(firstname, lastname), schoolClassID);
-}
-
-function saveToLocalStorage(student, schoolClassId) {
-  // Parse localStorage and get the db list
-  let db = JSON.parse(localStorage.getItem('db'));
-  
-  // Find the right class in the db list and add student
-  db.forEach(schoolClass => {
-    if(schoolClass.id == schoolClassId) {
-      schoolClass.students.push(student);
-      return;
-    }
-  })
-
-  // Push the db object to localStorage
-  localStorage.setItem('db', JSON.stringify(db));
-  // console.log(JSON.parse(localStorage.getItem('db')));
-}
-
-function addClassroom(schoolClassName) {
-  // Get all the classes from localStorage
-  let db = JSON.parse(localStorage.getItem('db'));
-  if(db === null) {
-    db = [];
-  }
-  
-  // Add the new class with date as unique id
-  let schoolClassID = Date.now();
-  db.push(new SchoolClass(schoolClassID, schoolClassName, [], []));
-
-  // Push the updated classlist to localStorage
-  localStorage.setItem('db', JSON.stringify(db));
-
-  // console.log(JSON.parse(localStorage.getItem('db')));
-}
-
-// Hamburger menu icon
-const hamburgerBtn = document.querySelector('.hamburger-btn');
-const modal = document.querySelector('.modal');
-hamburgerBtn.addEventListener('click', () => {
-  modal.style = 'display: block';
-  populateModalContent(); // load all classes from localstorage
-});
-window.addEventListener('click', e => {
-  if(e.target == modal) {
-    modal.style = 'display: none';
-    clearModalContent();
-  }
-});
-
-// Adding class FE
-let addClassButton = document.querySelector('.modal-content-addClassButton');
-addClassButton.addEventListener('click', () => {
-  
-  // Show input field and action buttons
-  let inputField = document.querySelector('.modal-content-actions');
-  addClassButton.style.display = 'none';
-  inputField.style.display = 'block';
-
-  // Clear input field
-  let input = document.querySelector('.modal-content-actions-inputSchoolClassName');
-  input.addEventListener('focusin', () => {
-    input.value = '';
-  });
-
-  // Cancel
-  document.querySelector('.modal-content-actions-cancel').addEventListener('click', () => {
-    addClassButton.style.display = 'block';
-    input.value = 'Klassnamn';
-    inputField.style.display = 'none';
-  });
-});
-
-// Submit schoolClass
-let submitButton = document.querySelector('.modal-content-actions-submit');
-submitButton.addEventListener('click', () => {
-  let schooClassName = document.querySelector('.modal-content-actions-inputSchoolClassName').value;
-  if(schooClassName.length < 1 || schooClassName === 'Klassnamn') {
-    alert('Class name must be longer than 1 character');
-  } else {
-    addClassroom(schooClassName.toLocaleUpperCase());
-    updateSchoolClasses();
-      console.log(JSON.parse(localStorage.getItem('db')));
-  }
-});
-
-function updateSchoolClasses() {
-  let db = JSON.parse(localStorage.getItem('db'));
-  let schoolClass = db[db.length-1];
-  const parent = document.querySelector('.modal-content-top');
-
-  let button = document.createElement('button');
-  button.innerHTML = schoolClass.name;
-  button.setAttribute('id', schoolClass.id);
-  button.classList.add('modal-content-schoolClass');
-  parent.append(button);
-}
-
-function populateModalContent() {
-  let db = JSON.parse(localStorage.getItem('db'));
-  const parent = document.querySelector('.modal-content-top');
-
-  for(let i = 0; i < db.length; i++) {
-    let button = document.createElement('button');
-    button.innerHTML = db[i].name;
-    button.setAttribute('id', db[i].id);
-    button.classList.add('modal-content-schoolClass');
-    parent.append(button);
-  }
-}
-
-function clearModalContent() {
-  const parent = document.querySelector('.modal-content-top');
-  while(parent.firstChild) {
-    parent.removeChild(parent.firstChild);
-  }
-}
+addModalButtons();
+showModal();
 
 console.log(JSON.parse(localStorage.getItem('db')));
