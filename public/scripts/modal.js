@@ -7,7 +7,7 @@ function updateSchoolClasses() {
 
     let button = document.createElement('button');
     button.innerHTML = schoolClass.name;
-    button.setAttribute('id', schoolClass.id);
+    button.setAttribute('data-schoolclass-id', schoolClass.id);
     button.classList.add('modal-content-schoolClass');
     parent.append(button);
 }
@@ -19,7 +19,7 @@ function populateModalContent() {
     for (let i = 0; i < db.length; i++) {
         let button = document.createElement('button');
         button.innerHTML = db[i].name;
-        button.setAttribute('id', db[i].id);
+        button.setAttribute('data-schoolClass-id', db[i].id);
         button.classList.add('modal-content-schoolClass');
         parent.append(button);
     }
@@ -76,8 +76,10 @@ let addStudentButton = document.querySelector('.modal-content-schoolClass-studen
 addStudentButton.addEventListener('click', () => {
   let firstname = document.querySelector('.inputFirstname').value;
   let lastname = document.querySelector('.inputLastname').value;
-  const schoolClassID = document.getElementById('1656157131945');
+  let schoolClassID = addStudentButton.closest('.modal-content-schoolClass').getAttribute('data-schoolclass-id');
+
   addToClass(firstname, lastname, schoolClassID);
 });
+
 
 export { updateSchoolClasses, populateModalContent, clearModalContent, addModalButtons }
