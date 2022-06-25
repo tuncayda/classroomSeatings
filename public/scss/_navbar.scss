@@ -84,6 +84,16 @@
                 margin: 1.6rem 0;
 
                 &-actions {
+                    display: none;
+
+                    &-addButton {
+                        margin-top: 1.6rem;
+                        font-weight: normal;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
                     
                     &-addStudent {
                         font-weight: normal;
@@ -94,13 +104,11 @@
                         border-radius: 4px;
                         padding-left: 8px;
                         color: $gray-45;
+                        margin-right: 1.6rem;
+                        
         
                         &:focus {
                             outline: 1px solid $gray-40;
-                        }
-
-                        &:first-child {
-                            margin-right: 1.6rem;
                         }
                     }
 
@@ -108,13 +116,12 @@
                         text-decoration: underline;
                         cursor: pointer;
                         margin-right: 1.6rem;
-                        margin-left: 3.2rem;
         
                         &:hover {
                             color: $gray-45;
                         }
                     }
-                    
+
                     &-submit {
                         width: 10rem;
                         height: 4.8rem;

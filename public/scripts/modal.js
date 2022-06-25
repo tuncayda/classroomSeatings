@@ -72,13 +72,32 @@ function addModalButtons() {
 /**
  * Add student
  */
-let addStudentButton = document.querySelector('.modal-content-schoolClass-students-actions-submit');
+let addStudentButton = document.querySelector('.modal-content-schoolClass-students-actions-addButton');
 addStudentButton.addEventListener('click', () => {
+  let studentActions = document.querySelector('.modal-content-schoolClass-students-actions');
+  studentActions.style = 'display: block';
+  addStudentButton.style = 'display: none';
+
+  // Cancel button
+  let studentCancelButton = document.querySelector('.modal-content-schoolClass-students-actions-cancel');
+  studentCancelButton.addEventListener('click', () => {
+    studentActions.style = 'display: none';
+    addStudentButton.style = 'display: block';
+  });
+
+  // Submit button
+  let submitStudent = document.querySelector('.modal-content-schoolClass-students-actions-submit');
+  submitStudent.addEventListener('click', () => {
   let firstname = document.querySelector('.inputFirstname').value;
   let lastname = document.querySelector('.inputLastname').value;
-  let schoolClassID = addStudentButton.closest('.modal-content-schoolClass').getAttribute('data-schoolclass-id');
+  let schoolClassID = 1656159433571;
+  // let schoolClassID = submitStudent.closest('.modal-content-schoolClass').getAttribute('data-schoolclass-id');
+
+  
 
   addToClass(firstname, lastname, schoolClassID);
+});
+  
 });
 
 
