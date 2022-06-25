@@ -71,6 +71,58 @@
   font-weight: bold;
   margin-bottom: 3.2rem;
 }
+.modal-content-schoolClass-students {
+  font-weight: normal;
+  margin: 1.6rem 0;
+}
+.modal-content-schoolClass-students-actions-addStudent {
+  font-weight: normal;
+  width: 18rem;
+  height: 4.8rem;
+  background-color: #EEEEEE;
+  border: 1px solid #E1E1E1;
+  border-radius: 4px;
+  padding-left: 8px;
+  color: #676767;
+}
+.modal-content-schoolClass-students-actions-addStudent:focus {
+  outline: 1px solid #CDCDCD;
+}
+.modal-content-schoolClass-students-actions-addStudent:first-child {
+  margin-right: 1.6rem;
+}
+.modal-content-schoolClass-students-actions-cancel {
+  text-decoration: underline;
+  cursor: pointer;
+  margin-right: 1.6rem;
+  margin-left: 3.2rem;
+}
+.modal-content-schoolClass-students-actions-cancel:hover {
+  color: #676767;
+}
+.modal-content-schoolClass-students-actions-submit {
+  width: 10rem;
+  height: 4.8rem;
+  background-color: #D9FFED;
+  border: 1px solid #5BFFB1;
+  color: #39B078;
+  border-radius: 4px;
+}
+.modal-content-schoolClass-students-actions-submit:hover {
+  cursor: pointer;
+  background-color: #C7FFE4;
+}
+.modal-content-schoolClass-students-row {
+  height: 3.2rem;
+  width: 20rem;
+  display: flex;
+  align-items: center;
+  padding-left: 0.8rem;
+}
+.modal-content-schoolClass-students-row:hover {
+  cursor: pointer;
+  background-color: #E9E9E9;
+}
 .modal-content-addClassButton:hover {
   cursor: pointer;
 }

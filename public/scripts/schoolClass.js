@@ -1,3 +1,5 @@
+import { Student } from './student.js';
+
 class SchoolClass {
     constructor(id, name, students, seatingTemplate) {
         this.id = id;
@@ -11,10 +13,10 @@ class SchoolClass {
     }
 }
 
-function addToClass(schoolClassID) {
+function addToClass(firstname, lastname, schoolClassID) {
     // Find the input html elements
-    let firstname = document.getElementById("firstname").value;
-    let lastname = document.getElementById("lastname").value;
+    // let firstname = document.getElementById("firstname").value;
+    // let lastname = document.getElementById("lastname").value;
 
     // Create student and push to localStorage
     saveToLocalStorage(new Student(firstname, lastname), schoolClassID);

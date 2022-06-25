@@ -78,6 +78,71 @@
             display: block;
             font-weight: bold;
             margin-bottom: 3.2rem;
+
+            &-students {
+                font-weight: normal;
+                margin: 1.6rem 0;
+
+                &-actions {
+                    
+                    &-addStudent {
+                        font-weight: normal;
+                        width: 18rem;
+                        height: 4.8rem;
+                        background-color: $gray-10;
+                        border: 1px solid $gray-20;
+                        border-radius: 4px;
+                        padding-left: 8px;
+                        color: $gray-45;
+        
+                        &:focus {
+                            outline: 1px solid $gray-40;
+                        }
+
+                        &:first-child {
+                            margin-right: 1.6rem;
+                        }
+                    }
+
+                    &-cancel {
+                        text-decoration: underline;
+                        cursor: pointer;
+                        margin-right: 1.6rem;
+                        margin-left: 3.2rem;
+        
+                        &:hover {
+                            color: $gray-45;
+                        }
+                    }
+                    
+                    &-submit {
+                        width: 10rem;
+                        height: 4.8rem;
+                        background-color: $green-10;
+                        border: 1px solid $green-20;
+                        color: $green-30;
+                        border-radius: 4px;
+            
+                        &:hover {
+                            cursor: pointer;
+                            background-color: $green-15;
+                        }
+                    }
+                }
+
+                &-row {
+                    height: 3.2rem;
+                    width: 20rem;
+                    display: flex;
+                    align-items: center;
+                    padding-left: .8rem;
+
+                    &:hover {
+                        cursor: pointer;
+                        background-color: $gray-30;
+                    }
+                }
+            }
         }
 
         &-addClassButton {

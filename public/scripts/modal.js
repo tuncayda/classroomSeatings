@@ -65,9 +65,19 @@ function addModalButtons() {
      } else {
        addClassroom(schooClassName.toLocaleUpperCase());
        updateSchoolClasses();
-         console.log(JSON.parse(localStorage.getItem('db')));
      }
    });
   }
+
+/**
+ * Add student
+ */
+let addStudentButton = document.querySelector('.modal-content-schoolClass-students-actions-submit');
+addStudentButton.addEventListener('click', () => {
+  let firstname = document.querySelector('.inputFirstname').value;
+  let lastname = document.querySelector('.inputLastname').value;
+  const schoolClassID = document.getElementById('1656157131945');
+  addToClass(firstname, lastname, schoolClassID);
+});
 
 export { updateSchoolClasses, populateModalContent, clearModalContent, addModalButtons }
