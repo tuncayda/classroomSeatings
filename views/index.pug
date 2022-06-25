@@ -8,10 +8,12 @@ head
   link(href='https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap' rel='stylesheet')
   link(rel='stylesheet' href='css/style.css')
   link(href='dist/gridstack.min.css' rel='stylesheet')
+  link(href='https://unpkg.com/aos@2.3.1/dist/aos.css' rel='stylesheet')
   title Classroom Seating
   include _navbar
 // The grid
-.grid-stack
+.grid-stack(data-aos="fade-up")
 // Scripts
 script(src='dist/gridstack-h5.js')
 script(src='scripts/grid.js' type='module')
+script(src='https://unpkg.com/aos@2.3.1/dist/aos.js')
