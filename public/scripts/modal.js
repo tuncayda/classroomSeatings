@@ -7,7 +7,7 @@ function updateSchoolClasses() {
 
   let button = document.createElement('button');
   button.innerHTML = schoolClass.name;
-  button.setAttribute('data-schoolclass-id', schoolClass.id);
+  button.setAttribute('data-schoolClass-id', schoolClass.id);
   button.classList.add('modal-content-schoolClass');
   parent.append(button);
 }
@@ -17,13 +17,32 @@ function populateModalContent() {
   const parent = document.querySelector('.modal-content-top');
 
   for (let i = 0; i < db.length; i++) {
-    let button = document.createElement('button');
-    button.innerHTML = db[i].name;
-    button.setAttribute('data-schoolClass-id', db[i].id);
-    button.classList.add('modal-content-schoolClass');
-    parent.append(button);
+    parent.insertAdjacentHTML('afterbegin', `
+    <div class="modal-content-schoolClass" data-schoolclass-id="${db[i].id}">${db[i].name}</div>
+    <div class="modal-content-schoolClass-students">
+      <button class="modal-content-schoolClass-students-actions-addButton">+ Elev</button>
+      <div class="modal-content-schoolClass-students-actions">
+        <input class="modal-content-schoolClass-students-actions-addStudent inputFirstname" type="text" value="Förnamn"/>
+        <input class="modal-content-schoolClass-students-actions-addStudent inputLastname" type="text" value="Efternamn"/>
+        <button class="modal-content-schoolClass-students-actions-cancel">Avbryt </button>
+        <button class="modal-content-schoolClass-students-actions-submit">Spara</button>
+      </div>
+    </div>
+    `)
   }
 }
+// function populateModalContent() {
+//   let db = JSON.parse(localStorage.getItem('db'));
+//   const parent = document.querySelector('.modal-content-top');
+
+//   for (let i = 0; i < db.length; i++) {
+//     let button = document.createElement('button');
+//     button.innerHTML = db[i].name;
+//     button.setAttribute('data-schoolClass-id', db[i].id);
+//     button.classList.add('modal-content-schoolClass');
+//     parent.append(button);
+//   }
+// }
 
 function clearModalContent() {
   const parent = document.querySelector('.modal-content-top');
@@ -72,6 +91,7 @@ function addModalButtons() {
 /**
  * Add student
  */
+
 let addStudentButton = document.querySelector('.modal-content-schoolClass-students-actions-addButton');
 addStudentButton.addEventListener('click', () => {
   let studentActions = document.querySelector('.modal-content-schoolClass-students-actions');
@@ -94,12 +114,16 @@ addStudentButton.addEventListener('click', () => {
     if (firstname.length < 1 || firstname == 'Förnamn'|| lastname.length < 1 || lastname == 'Efternamn') {
       alert('Please enter a name');
     } else {
-      let schoolClassID = 1656159433571;
-      // let schoolClassID = submitStudent.closest('.modal-content-schoolClass').getAttribute('data-schoolclass-id');
+      let schoolClassID = submitStudent.closest('.modal-content-schoolClass').getAttribute('data-schoolClass-id');
       addToClass(firstname, lastname, schoolClassID);
     }
   });
 });
+
+
+
+
+
 
 
 
