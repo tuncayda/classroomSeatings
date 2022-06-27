@@ -17,11 +17,37 @@ function populateModalContent() {
   const parent = document.querySelector('.modal-content-top');
 
   for (let i = 0; i < db.length; i++) {
-    let button = document.createElement('button');
-    button.innerHTML = db[i].name;
-    button.setAttribute('data-schoolClass-id', db[i].id);
-    button.classList.add('modal-content-schoolClass');
-    parent.append(button);
+    
+    // SchoolClass container
+    let schoolClass = document.createElement('div');
+    schoolClass.innerHTML = db[i].name;
+    schoolClass.setAttribute('data-schoolClass-id', db[i].id);
+    schoolClass.classList.add('modal-content-schoolClass');
+
+    // Student container
+    let studentsContainer = document.createElement('div');
+    studentsContainer.classList.add('modal-content-schoolClass-students');
+
+    // Loop through list of students and add to the container
+    db[i].students.forEach(student => {
+      let row = document.createElement('div');
+      row.innerHTML = student.firstName + ' ' + student.lastName;
+      row.classList.add('modal-content-schoolClass-students-row');
+      studentsContainer.append(row);
+    });
+
+    // Append students container to the class
+    schoolClass.append(studentsContainer);
+
+    // Create add student button and attach to SchooClass container
+    let addStudentButton = document.createElement('button');
+    addStudentButton.textContent = '+ Elev';
+    addStudentButton.addEventListener('click', () => {
+      
+    });
+    
+    // append to modal-top at the end
+    parent.append(schoolClass);
   }
 }
 
@@ -101,7 +127,7 @@ addStudentButton.addEventListener('click', () => {
   });
 });
 
-
+// addToClass('Mustafa', 'Colak', 1656359876529)
 
 AOS.init({
   duration: 550,
